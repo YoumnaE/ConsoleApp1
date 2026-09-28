@@ -6,6 +6,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            #region Part One
+
+            //Q1: the copy has its own address so modifications doesnt reach the original deliveryAddress
+
+            #region Q2
+            // a) 1.all fields are public anyone can directly change them.
+            //    2. no validation
+            //    3. cannot add rules when values change
+
+            // b) private field + public property = values can be reached but invalid are rejected
+            #endregion
+
+            #endregion
+
             #region Part Two
             #region Q1
 
@@ -18,7 +32,7 @@ namespace ConsoleApp1
             Console.WriteLine(address1.GetFullAddress());
             Console.WriteLine(address2.GetFullAddress());
 
-            #endregion
+            
 
 
             DeliveryCenter deliveryCenter = new DeliveryCenter();
@@ -88,6 +102,7 @@ namespace ConsoleApp1
             }
 
             Console.ReadLine();
+            #endregion
         }
     }
 }
