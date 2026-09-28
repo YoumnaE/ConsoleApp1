@@ -14,17 +14,78 @@ namespace ConsoleApp1
 
             address2.Street = "Sidi Gaber";
             address2.BuildingNumber = 1;
-
+            //Because DeliveryAddress is a struct, address2 gets its own copy
             Console.WriteLine(address1.GetFullAddress());
             Console.WriteLine(address2.GetFullAddress());
 
             #endregion
 
 
+            DeliveryCenter deliveryCenter = new DeliveryCenter();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"***Enter Shipment {i + 1}***");
+
+                Console.Write("Tracking Code: ");
+                string trackingCode = Console.ReadLine();
+
+                Console.Write("Description: ");
+                string description = Console.ReadLine();
+
+                Console.Write("Weight: ");
+                double weight = double.Parse(Console.ReadLine());
+
+                Console.Write("Delivery Fee: ");
+                double deliveryFee = double.Parse(Console.ReadLine());
+
+                Console.Write("City: ");
+                string city = Console.ReadLine();
+
+                Console.Write("Street: ");
+                string street = Console.ReadLine();
+
+                Console.Write("Building Number: ");
+                int buildingNumber = int.Parse(Console.ReadLine());
+
+                DeliveryAddress address = new DeliveryAddress(city,street,buildingNumber);
+
+                Shipment shipment = new Shipment(trackingCode,description,weight,deliveryFee,address);
+
+                deliveryCenter.AddShipment(shipment);
+
             #endregion
 
 
 
+
+                
+            }
+
+            //print all 3 shipments
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"\nShipment {i + 1}:");
+                deliveryCenter[i].PrintShipment();
+            }
+
+
+            //search using string indexer
+            Console.Write("\nEnter tracking code to search: ");
+            string searchCode = Console.ReadLine();
+
+            Shipment foundShipment = deliveryCenter[searchCode];
+
+            // Check if shipment was found
+            if (!string.IsNullOrEmpty(foundShipment.TrackingCode))
+            {
+                Console.WriteLine("\nShipment found:");
+                foundShipment.PrintShipment();
+            }
+            else
+            {
+                Console.WriteLine("Shipment not found.");
+            }
 
             Console.ReadLine();
         }
