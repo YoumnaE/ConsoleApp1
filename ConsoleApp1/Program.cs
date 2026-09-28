@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1
+﻿using System.Net;
+
+namespace ConsoleApp1
 {
     internal class Program
     {
@@ -17,6 +19,8 @@
             Console.WriteLine(address2.GetFullAddress());
 
             #endregion
+
+
             #endregion
 
 
